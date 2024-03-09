@@ -85,6 +85,15 @@ public class StringArrayUtils {
         }
 
         return isEqual;
+
+        //for palindromic, set a bool to false, then create a for loop, then inside of that for loop
+        //have c comparison that compares the array[i] to the last equivelent of array, array[array.length - 1 -i]
+        // if it's equal change bool to true
+        //its array[array.length - 1 -i] bc array.length -1 auto goes to the last element of the array
+        //the - i makes sure array[i] is being compared to the position equivalent,
+        // so if i = 1, which is the second iteration, it would compare array[1] to array[array.length -1 - 1]
+        //which is the second to last element of the array
+        
     }
 
     /**
@@ -108,6 +117,16 @@ public class StringArrayUtils {
             }
         }
         return true;
+
+        //for pangramic, create a String with all the lowercase letters in alphabet
+        //then convert it to a char array
+        //then you're going to use Stringbuilder and a for each loop
+        //to append each string in the String[] array parameter but set it to lowercase bc the aplhabet we created is all lowercase
+        //then convert the Stringbuilder instance to a String
+        //then use a for each loop to loop through the char array of the alphabet
+        //if the Stringbuilder instance that was convereted into a String does not contain the String.valueOf()
+        // of the character, return false, if it goes through the entire for each loop without using the block of code
+        //then it's true
 
     }
 
