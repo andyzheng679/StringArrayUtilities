@@ -1,6 +1,6 @@
 package com.zipcodewilmington;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * Created by leon on 1/29/18.
@@ -174,7 +174,15 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+        List<String> noDup = new ArrayList<>();
+        noDup.add(array[0]);
+        for(int i = 1; i < array.length; i++){
+            if(!array[i].equals(array[i - 1])){
+                noDup.add(array[i]);
+            }
+        }
+        return noDup.toArray(new String[0]);
+
     }
 
     /**
@@ -182,7 +190,37 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        List<String> holder = new ArrayList<>();
+        StringBuilder appending = new StringBuilder();
+
+
+        appending.append(array[0]);
+        for(int i = 1; i < array.length; i++){
+            if(array[i].equals(array[i - 1])){
+                appending.append(array[i]);
+            } else if (!array[i].equals(array[i - 1])) {
+                holder.add(appending.toString());
+                appending.setLength(0); //clears appending
+                appending.append(array[i]);
+
+            }
+        }
+        holder.add(appending.toString());
+
+        return holder.toArray(new String[0]);
+        // created a List obj bc order does matter and created a StringBuilder obj bc we have to append strings together
+        //started off by appending array[0] first bc in the for loop, int i = 1 bc we want to compare the previous index
+        //if we compare it to the next index, it will go out of bounds
+        //inside the for loop, use an if statement
+        //if array[i] is equal to the previous index, append it to the StringBuilder obj
+        //if it does not equal, then add the value thats in the StringBuilder obj to the List obj
+        //then reset the Stringbuilder obj: appending.setLength(0);
+        //then append the current array[i] to the StringBuilder obj
+        //after the loop is done, the only thing missing in the List obj is the last element in the input array
+        //which will be whatever is in the Stringbuilder obj from this line: appending.append(array[i]);
+        //outside of the for loop, add that to the List obj
+        //then convert the List obj to a String[] using: .toArray(new String[0]);
+
     }
 
 
