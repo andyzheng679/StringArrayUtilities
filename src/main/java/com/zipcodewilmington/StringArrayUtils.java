@@ -93,7 +93,7 @@ public class StringArrayUtils {
         //the - i makes sure array[i] is being compared to the position equivalent,
         // so if i = 1, which is the second iteration, it would compare array[1] to array[array.length -1 - 1]
         //which is the second to last element of the array
-        
+
     }
 
     /**
@@ -136,7 +136,13 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int numOfOcc = 0;
+        for(String word : array){
+            if(value.equals(word)){
+                numOfOcc++;
+            }
+        }
+        return numOfOcc;
     }
 
     /**
@@ -145,7 +151,22 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        int valueCounter = 0;
+        for(int i = 0; i < array.length; i++){
+            if(array[i].equals(valueToRemove)){
+                valueCounter++;
+            }
+        }
+
+        String[] newArray = new String[array.length - valueCounter];
+        int newArrayIndex = 0; //index of newArray, only goes up when a value is added into it
+        for(int i = 0; i < array.length; i++){
+            if(!array[i].equals(valueToRemove)){
+                newArray[newArrayIndex] = array[i];
+                newArrayIndex++;
+            }
+        }
+        return  newArray;
     }
 
     /**
